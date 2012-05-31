@@ -3,6 +3,7 @@
   <groupId>com.stickify</groupId>
   <artifactId>stickify</artifactId>
   <version>1.0</version>
+  <packaging>war</packaging>
   <name>Stickify</name>
   <description>Remember and share content easily</description>
   
@@ -242,5 +243,5 @@
 		</plugin>
 	</plugins>
   </build>
-  
+ 
 </project>
