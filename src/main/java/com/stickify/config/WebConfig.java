@@ -1,6 +1,6 @@
 package com.stickify.config;
 
-import javax.annotation.Resource;
+import javax.inject.Inject;
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -21,7 +21,7 @@ public class WebConfig extends WebMvcConfigurerAdapter {
 	private static final String PROPERTY_NAME_MESSAGESOURCE_BASENAME = "message.source.basename";
     private static final String PROPERTY_NAME_MESSAGESOURCE_USE_CODE_AS_DEFAULT_MESSAGE = "message.source.use.code.as.default.message";
 	
-	@Resource
+	@Inject
     private Environment environment;
 	
 	@Bean
