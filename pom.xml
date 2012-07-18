@@ -12,6 +12,7 @@
     <mysql.connector.version>5.1.20</mysql.connector.version>
   	<java-version>1.6</java-version>
 	<org.springframework-version>3.1.2.RELEASE</org.springframework-version>
+	<org.springframework.security-version>3.1.1.RELEASE</org.springframework.security-version>
 	<org.aspectj-version>1.6.9</org.aspectj-version>
 	<cglib-version>2.2.2</cglib-version>
 	<org.slf4j-version>1.6.1</org.slf4j-version>
@@ -46,12 +47,40 @@
   </repositories>
   
   <dependencies>
+
+	<!-- Thymeleaf layout dialect -->
+  	<dependency>
+    	<groupId>net.ultraq</groupId>
+    	<artifactId>thymeleaf-layout-dialect</artifactId>
+    	<version>1.0</version>
+	</dependency>
+	
+	<!-- Jackson Json mapper -->
+	<dependency>
+		<groupId>org.codehaus.jackson</groupId>
+		<artifactId>jackson-mapper-asl</artifactId>
+		<version>1.9.7</version>
+	</dependency>
 	
 	<!-- Javax Inject -->
     <dependency>
 		<groupId>javax.inject</groupId>
 		<artifactId>javax.inject</artifactId>
 		<version>1</version>
+	</dependency>
+	
+	<!-- Hibernate's Bean Validation (JSR-303) reference implementation -->
+	<dependency>
+		<groupId>org.hibernate</groupId>
+		<artifactId>hibernate-validator</artifactId>
+		<version>4.3.0.Final</version>
+	</dependency>
+	
+	<!-- Javax validation -->
+	<dependency>
+		<groupId>javax.validation</groupId>
+		<artifactId>validation-api</artifactId>
+		<version>1.0.0.GA</version>
 	</dependency>
 	
 	<!-- Apache Commons -->
@@ -83,6 +112,28 @@
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-webmvc</artifactId>
 		<version>${org.springframework-version}</version>
+	</dependency>
+	
+	<!-- Spring Security -->
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-core</artifactId>
+		<version>${org.springframework.security-version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-web</artifactId>
+		<version>${org.springframework.security-version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-taglibs</artifactId>
+		<version>${org.springframework.security-version}</version>
+	</dependency>
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-config</artifactId>
+		<version>${org.springframework.security-version}</version>
 	</dependency>
 	
 	<!-- CGLIB -->
@@ -261,6 +312,7 @@
 			</configuration>
 		</plugin>
 	</plugins>
+	<finalName>stickify</finalName>
   </build>
  
 </project>
