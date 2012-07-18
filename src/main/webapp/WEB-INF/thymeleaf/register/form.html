@@ -1,0 +1,48 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-3.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:th="http://www.thymeleaf.org"
+	  layout:decorator="/layout/layout">
+	<head>
+		<title th:text="#{user.register.form.title}">Register with Stickify</title>
+	</head>
+	<body>
+		<div layout:fragment="content">
+			<h2 th:text="#{user.register.form.title}">Register with Stickify</h2>
+			<form action="#" th:action="@{/register}" th:object="${user}" method="post">
+				
+				<ul th:if="${#fields.hasErrors('*')}" class="errorlist">
+            		<li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</li>
+          		</ul>
+				
+				<div>
+		        	<label for="username" th:text="#{user.form.username}">Username</label>
+		            <input type="text" th:field="*{username}" th:class="${#fields.hasErrors('username')}? 'fieldError'" />
+		        </div>
+		        <div>
+		        	<label for="firstName" th:text="#{user.form.firstName}">First name</label>
+		            <input type="text" th:field="*{firstName}" th:class="${#fields.hasErrors('firstName')}? 'fieldError'" />
+		        </div>
+		        <div>
+		        	<label for="lastName" th:text="#{user.form.lastName}">Last name</label>
+		            <input type="text" th:field="*{lastName}" th:class="${#fields.hasErrors('lastName')}? 'fieldError'" />
+		        </div>
+		        <div>
+		        	<label for="password" th:text="#{user.form.password}">Password</label>
+		            <input type="password" th:field="*{password}" th:class="${#fields.hasErrors('password')}? 'fieldError'" />
+		        </div>
+		        <div>
+		        	<label for="confirmPassword" th:text="#{user.form.confirmPassword}">Confirm password</label>
+		            <input type="password" name="confirmPassword" th:class="${#fields.hasErrors('password')}? 'fieldError'" />
+		        </div>
+		        <div>
+		        	<label for="email" th:text="#{user.form.email}">Email</label>
+		            <input type="text" th:field="*{email}" th:class="${#fields.hasErrors('email')}? 'fieldError'" />
+		        </div>
+		        <div>
+           	 		<button type="submit" name="save" th:text="#{user.register.form.submitButton}">Register</button>    
+          		</div>
+		        
+			</form>
+		</div>
+	</body>
+</html>

@@ -12,3 +12,8 @@ username: stickify
 password: st1ck1fy
 
 has full access rights to the database. 
+
+If the above model is used, the following user with admin rights is also inserted into the records: 
+
+username: stickify
+password: stickify

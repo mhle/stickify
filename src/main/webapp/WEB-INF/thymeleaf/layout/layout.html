@@ -17,11 +17,11 @@
 				            <span class="icon-bar"></span>
 				            <span class="icon-bar"></span>
 		         		</a>
-		          		<a class="brand" href="/" th:text="#{navbar.projectname}">A Door To</a>
+		          		<a class="brand" href="/" th:text="#{navbar.projectname}" th:href="@{/}">Stickify</a>
 		          		<div class="nav-collapse">
 		            		<ul class="nav">
-		              			<li><a href="/about">About</a></li>
-		              			<li><a href="/contact">Contact</a></li>
+		              			<li><a href="#" th:text="#{navbar.about}" th:href="@{/}">About</a></li>
+		              			<li><a href="#" th:text="#{navbar.contact}" th:href="@{/}">Contact</a></li>
 		            		</ul>
 		        		</div>
 		      		</div>
@@ -34,7 +34,7 @@
 			</div>
 			
 			<div layout:fragment="content"></div>
-			<div id="footer">Copyright 2012 A Door To</div>
+			<div id="footer" th:text="#{layout.copyright}">Copyright 2012 Stickify</div>
 		</div>
 	</body>
 </html>

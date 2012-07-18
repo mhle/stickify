@@ -1,10 +1,24 @@
-<!DOCTYPE html>
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-3.dtd"> 
 <html xmlns="http://www.w3.org/1999/xhtml" 
-	  xmlns:th="http://www.thymeleaf.org">
+	  xmlns:th="http://www.thymeleaf.org"
+	  layout:decorator="/layout/layout">
 	<head>
-	
+		<title th:text="#{home.index.title}">Welcome to Stickify</title>
 	</head>
 	<body>
-		<h1>Welcome to Stickify!</h1>
+		<div layout:fragment="content">
+			<div class="hero-unit">
+				<h1 th:text="#{home.index.tagline}">Remember and share content easily!</h1>
+			</div>
+			
+			<p th:if="${sec.isAuthenticated()}" th:text="#{home.index.authenticated(${sec.principal.user.firstName})}">Authenticated</p>
+			<ul th:if="${sec.isAuthenticated()}">
+				<li><a th:href="@{/logout}" href="#" th:text="#{home.index.logout}">Logout</a></li>
+			</ul>
+			<ul th:unless="${sec.isAuthenticated()}">
+				<li><a th:href="@{/login}" href="../login/form.html" th:text="#{home.index.login}">Login</a></li>
+				<li><a th:href="@{/register}" href="../register/form.html" th:text="#{home.index.register}">Register with Stickify</a></li>
+			</ul>
+		</div>
 	</body>
 </html>
