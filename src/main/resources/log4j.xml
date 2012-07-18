@@ -29,13 +29,17 @@
 	</logger>
 
 	<logger name="org.springframework.http">
-		<level value="debug" />
+		<level value="info" />
 	</logger>
 
 	<logger name="org.springframework.web">
-		<level value="debug" />
+		<level value="info" />
 	</logger>
-
+	
+	<logger name="org.springframework.security">
+		<level value="info" />
+	</logger>
+	
 	<!-- Root Logger -->
 	<root>
 		<priority value="info" />
