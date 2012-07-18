@@ -11,7 +11,7 @@
   	<hibernate.version>4.1.2.Final</hibernate.version>
     <mysql.connector.version>5.1.20</mysql.connector.version>
   	<java-version>1.6</java-version>
-	<org.springframework-version>3.1.1.RELEASE</org.springframework-version>
+	<org.springframework-version>3.1.2.RELEASE</org.springframework-version>
 	<org.aspectj-version>1.6.9</org.aspectj-version>
 	<cglib-version>2.2.2</cglib-version>
 	<org.slf4j-version>1.6.1</org.slf4j-version>
@@ -236,7 +236,7 @@
 			<version>2.1.1</version>
 			<configuration>
 				<warName>${project.artifactId}-${project.version}</warName>
-				<ignoreWebxml>false</ignoreWebxml>
+				<ignoreWebxml>true</ignoreWebxml>
 			</configuration>
 		</plugin>
 		<plugin>
