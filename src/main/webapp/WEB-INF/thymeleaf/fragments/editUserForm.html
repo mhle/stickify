@@ -1,0 +1,25 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-3.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:th="http://www.thymeleaf.org"
+	  layout:decorator="/layout/layout">
+	<body>
+		<div th:fragment="form_elements">
+			<div>
+	        	<label for="username" th:text="#{user.form.username}">Username</label>
+	            <input type="text" th:field="*{username}" th:class="${#fields.hasErrors('username')}? 'fieldError'" />
+	        </div>
+	        <div>
+	        	<label for="firstName" th:text="#{user.form.firstName}">First name</label>
+	            <input type="text" th:field="*{firstName}" th:class="${#fields.hasErrors('firstName')}? 'fieldError'" />
+	        </div>
+	        <div>
+	        	<label for="lastName" th:text="#{user.form.lastName}">Last name</label>
+	            <input type="text" th:field="*{lastName}" th:class="${#fields.hasErrors('lastName')}? 'fieldError'" />
+	        </div>
+	        <div>
+	        	<label for="email" th:text="#{user.form.email}">Email</label>
+	            <input type="text" th:field="*{email}" th:class="${#fields.hasErrors('email')}? 'fieldError'" />
+	        </div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-3.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:th="http://www.thymeleaf.org"
+	  layout:decorator="/layout/layout">
+	<body>
+		<table th:fragment="user_details">
+			<tr>
+				<td th:text="#{account.view.username}">Username:</td>
+				<td th:text="${user.username}">jdoe</td>
+			</tr>
+			<tr>
+				<td th:text="#{account.view.name}">Name:</td>
+				<td th:text="${user.name}">John Doe</td>
+			</tr>
+			<tr>
+				<td th:text="#{account.view.email}">Email:</td>
+				<td th:text="${user.email}">john@doe.com</td>
+			</tr>
+		</table>
+	</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-3.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:th="http://www.thymeleaf.org"
+	  layout:decorator="/layout/layout">
+	<head>
+		<title th:text="#{account.view.title}">Account Details</title>
+	</head>
+	<body>
+		<div layout:fragment="content">
+			<h1 th:text="#{account.view.title}">Account Details</h1>
+			<div th:substituteby="fragments/viewUser :: user_details"></div>
+			<ul>
+				<li><a href="#" th:text="#{account.view.changePassword}" th:href="@{/account/changepassword}">Change password</a></li>
+				<li><a href="#" th:text="#{account.view.editDetails}" th:href="@{/account/edit}">Edit details</a></li>
+			</ul>
+		</div>
+	</body>
+</html>

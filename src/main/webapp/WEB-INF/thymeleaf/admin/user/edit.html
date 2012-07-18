@@ -1,0 +1,30 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-3.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:th="http://www.thymeleaf.org"
+	  layout:decorator="/layout/layout">
+	<head>
+		<title th:text="#{admin.user.edit.title(${user.name})}">Edit User</title>
+	</head>
+	<body>
+		<div layout:fragment="content">
+			<h1 th:text="#{admin.user.edit.title(${user.name})}">Edit User</h1>
+			<form action="#" th:action="@{/admin/user/save}" th:object="${user}" method="post">
+				
+				<ul th:if="${#fields.hasErrors('*')}" class="errorlist">
+            		<li th:each="err : ${#fields.errors('*')}" th:text="${err}">Input is incorrect</li>
+          		</ul>
+
+				<div th:include="fragments/editUserForm :: form_elements"></div>
+		        <ul>
+					<li th:each="role : ${allRoles}">
+						<input type="checkbox" th:field="*{roles}" th:value="${role.id}" />
+						<label th:for="${#ids.prev('roles')}" th:text="${role.name}">ADMIN</label>
+					</li>
+				</ul>
+				<div>
+           	 		<button type="submit" name="save" th:text="#{admin.user.edit.form.submitButton}">Save</button>    
+          		</div>
+			</form>
+		</div>
+	</body>
+</html>

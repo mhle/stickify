@@ -1,0 +1,16 @@
+<!DOCTYPE html SYSTEM "http://www.thymeleaf.org/dtd/xhtml1-strict-thymeleaf-spring3-3.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:th="http://www.thymeleaf.org"
+	  layout:decorator="/layout/layout">
+	<head>
+		<title th:text="#{admin.welcome.title}">Admin Pages</title>
+	</head>
+	<body>
+		<div layout:fragment="content">
+			<h1 th:text="#{admin.welcome.title}">Stickify Admin Pages</h1>
+			<ul>
+				<li><a th:href="@{/admin/user/list}" href="#" th:text="#{admin.welcome.listUsers}">List users</a></li>
+			</ul>
+		</div>
+	</body>
+</html>

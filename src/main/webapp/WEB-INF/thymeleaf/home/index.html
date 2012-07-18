@@ -13,6 +13,8 @@
 			
 			<p th:if="${sec.isAuthenticated()}" th:text="#{home.index.authenticated(${sec.principal.user.firstName})}">Authenticated</p>
 			<ul th:if="${sec.isAuthenticated()}">
+				<li><a th:href="@{/account/details}" href="../account/view.html" th:text="#{home.index.account}">Account settings</a></li>
+				<li th:if="${sec.hasRole('ADMIN')}"><a th:href="@{/admin}" href="../admin/welcome.html" th:text="#{home.index.admin}">Admin pages</a></li>
 				<li><a th:href="@{/logout}" href="#" th:text="#{home.index.logout}">Logout</a></li>
 			</ul>
 			<ul th:unless="${sec.isAuthenticated()}">
