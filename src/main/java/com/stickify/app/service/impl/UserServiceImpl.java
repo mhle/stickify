@@ -1,0 +1,64 @@
+package com.stickify.app.service.impl;
+
+import java.util.List;
+
+import javax.inject.Inject;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.stickify.app.domain.User;
+import com.stickify.app.repository.UserRepository;
+import com.stickify.app.service.UserService;
+
+/**
+ * Modified on: 4 Jun 2012
+ * 
+ * Service implementation for <code>User</code>.
+ *
+ * @version: 1.0 4 Jun 2012
+ * @author (c): Michael Le
+ * 
+ */
+@Service
+@Transactional(readOnly=true)
+public class UserServiceImpl implements UserService {
+	private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
+	
+	@Inject
+	private UserRepository userRepository;
+
+	@Override
+	@Transactional
+	public User save(User user) {
+        return userRepository.save(user);
+	}
+
+	@Override
+	@Transactional
+	public User delete(Long userId) {
+		LOGGER.debug("Deleting user with id: " + userId);
+        
+        User deleted = userRepository.findOne(userId);
+               
+        userRepository.delete(deleted);
+        return deleted;
+	}
+
+	@Override
+	public List<User> findAll() {
+		return userRepository.findAll();
+	}
+
+	@Override
+	public User findById(Long id) {
+		return userRepository.findOne(id);
+	}	
+	
+	@Override
+	public User findByUsername(String username) {
+		return userRepository.findByUsername(username);
+	}	
+}
