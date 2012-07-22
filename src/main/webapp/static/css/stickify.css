@@ -1,0 +1,7 @@
+body {
+	padding-top: 40px; /* Needed when using Navbar from Twitter Bootstrap */
+}
+
+.alert {
+	margin-bottom: 0;
+}
