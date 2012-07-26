@@ -4,6 +4,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 
+import org.springframework.orm.jpa.support.OpenEntityManagerInViewFilter;
 import org.springframework.web.WebApplicationInitializer;
 import org.springframework.web.context.ContextLoaderListener;
 import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
@@ -32,6 +33,8 @@ public class StickifyInitializer implements WebApplicationInitializer {
 		// Manages the lifecycle of the root application context
 		servletContext.addListener(new ContextLoaderListener(rootContext));
 		
+		//Enable OpenSessionInView pattern
+		servletContext.addFilter("openSessionInViewFilter", new OpenEntityManagerInViewFilter()).addMappingForUrlPatterns(null, false, "/*");
 		// Secures the application
 		servletContext.addFilter("securityFilter", new DelegatingFilterProxy("springSecurityFilterChain")).addMappingForUrlPatterns(null, false, "/*");
 		
