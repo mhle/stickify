@@ -33,8 +33,8 @@ public class StickifyInitializer implements WebApplicationInitializer {
 		// Manages the lifecycle of the root application context
 		servletContext.addListener(new ContextLoaderListener(rootContext));
 		
-		//Enable OpenSessionInView pattern
-		servletContext.addFilter("openSessionInViewFilter", new OpenEntityManagerInViewFilter()).addMappingForUrlPatterns(null, false, "/*");
+		//Enable OpenEntityManagerInView pattern
+		servletContext.addFilter("openEntityManagerInViewFilter", new OpenEntityManagerInViewFilter()).addMappingForUrlPatterns(null, false, "/*");
 		// Secures the application
 		servletContext.addFilter("securityFilter", new DelegatingFilterProxy("springSecurityFilterChain")).addMappingForUrlPatterns(null, false, "/*");
 		
