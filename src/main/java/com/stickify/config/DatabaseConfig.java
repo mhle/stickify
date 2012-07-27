@@ -6,7 +6,6 @@ import javax.inject.Inject;
 import javax.sql.DataSource;
 
 import org.hibernate.ejb.HibernatePersistence;
-import org.springframework.context.annotation.AdviceMode;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
@@ -18,7 +17,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import com.jolbox.bonecp.BoneCPDataSource;
 
 @Configuration
-@EnableTransactionManagement(mode=AdviceMode.ASPECTJ)
+@EnableTransactionManagement
 @PropertySource("classpath:application.properties")
 public class DatabaseConfig {
 	
