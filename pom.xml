@@ -295,6 +295,7 @@
 			<configuration>
 				<warName>${project.artifactId}-${project.version}</warName>
 				<ignoreWebxml>true</ignoreWebxml>
+				<failOnMissingWebXml>false</failOnMissingWebXml>
 			</configuration>
 		</plugin>
 		<plugin>
