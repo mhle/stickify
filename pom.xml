@@ -44,11 +44,6 @@
         <name>JBoss repository</name>
         <url>https://repository.jboss.org/nexus/content/groups/public</url>
     </repository>
-    <repository>
-        <id>project.local</id>
-        <name>project</name>
-        <url>file:${project.basedir}/repo</url>
-    </repository>
   </repositories>
   
   <dependencies>
@@ -62,9 +57,9 @@
 	
 	<!-- Thymeleaf layout dialect -->
   	<dependency>
-    	<groupId>net.ultraq</groupId>
-    	<artifactId>thymeleaf-layout-dialect</artifactId>
-    	<version>1.0</version>
+		<groupId>nz.net.ultraq.web.thymeleaf</groupId>
+		<artifactId>thymeleaf-layout-dialect</artifactId>
+		<version>1.0.1</version>
 	</dependency>
 	
 	<!-- Jackson Json mapper -->
