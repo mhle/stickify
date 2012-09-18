@@ -10,6 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -67,5 +68,12 @@ public class Role implements Serializable {
 		// object must be Role at this point
 		Role role = (Role) obj;
 		return this.name.equals(role.getName());
+	}
+	
+	@Override
+	public int hashCode() {
+		return new HashCodeBuilder(5, 7).
+	            	append(this.name).
+	            	toHashCode();
 	}
 }
