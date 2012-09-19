@@ -16,9 +16,9 @@ e.g. mysql -u root -p < stickify.sql
 
 OR open stickify.mwb (located in the same directory as the sql file) in MySQL Workbench and perform a forward engineer of the model.
 
-2. The above script should create the following user with full access to the newly created schema: username: stickify, password: st1ck1fy
+2. The above sql script will create the following user with full access to the newly created schema: username: stickify, password: st1ck1fy
 
-3. Deploy to an embedded Tomcat 7 instance by issuing the following command: mvn tomcat7:run  
+3. Issue the command mvn tomcat7:run in order to deploy to an embedded Tomcat 7 instance.  
 
 4. Point your browser to http://localhost:8080/stickify
 
