@@ -37,34 +37,68 @@ public class UserController {
 	
 	Logger logger = LoggerFactory.getLogger(UserController.class);
 	
+	/**
+	 * The user service
+	 */
 	@Inject
 	private UserService userService;
 	
+	/**
+	 * The role service
+	 */
 	@Inject
 	private RoleService roleService;
 	
+	/**
+	 * Register Spring's <code>PropertyEditor</code>s
+	 * @param request
+	 * @param binder
+	 * @throws Exception
+	 */
 	@InitBinder
 	protected void initBinder(HttpServletRequest request, ServletRequestDataBinder binder) throws Exception {
 		binder.registerCustomEditor(Role.class, new RolePropertyEditor(roleService));	       
 	}
 	
+	/**
+	 * Insert all roles to model as reference data
+	 * @return list of all roles
+	 */
 	@ModelAttribute("allRoles")
 	public List<Role> allRoles() {
 		return roleService.findAll();
 	}
 	
+	/**
+	 * Handle request for listing all users
+	 * @param model
+	 * @return viewname
+	 */
 	@RequestMapping("/admin/user/list")
 	public String listUsers(Model model) {
 		model.addAttribute("users", userService.findAll());
 		return "admin/user/list";
 	}
 	
+	/**
+	 * Handle request for displaying edit user form
+	 * @param userId
+	 * @param model
+	 * @return viewname
+	 */
 	@RequestMapping(value="/admin/user/{userId}/edit", method=RequestMethod.GET)
 	public String edit(@PathVariable Long userId, Model model) {
 		model.addAttribute("user", userService.findById(userId)); 
 		return "admin/user/edit";
 	}
 	
+	/**
+	 * Handle form submission for saving user details
+	 * @param user
+	 * @param result
+	 * @param status
+	 * @return viewname
+	 */
 	@RequestMapping(value="/admin/user/save", method=RequestMethod.POST) 
 	public String save(@Valid User user, BindingResult result, SessionStatus status) {
 		if (result.hasErrors()) {
@@ -76,12 +110,23 @@ public class UserController {
 		return "redirect:/admin/user/list";
 	}
 	
+	/**
+	 * Handle request to delete user
+	 * @param userId
+	 * @return viewname
+	 */
 	@RequestMapping("/admin/user/{userId}/delete")
 	public String delete(@PathVariable Long userId) {
 		userService.delete(userId);
 		return "redirect:/admin/user/list";
 	}
 	
+	/**
+	 * Handle request to view user details
+	 * @param userId
+	 * @param model
+	 * @return viewname
+	 */
 	@RequestMapping("/admin/user/{userId}/view")
 	public String view(@PathVariable Long userId, Model model) {
 		model.addAttribute("user", userService.findById(userId));

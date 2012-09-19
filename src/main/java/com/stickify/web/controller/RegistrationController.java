@@ -32,12 +32,21 @@ public class RegistrationController {
 	
 	Logger logger = LoggerFactory.getLogger(RegistrationController.class);
 	
+	/**
+	 * The password encoder
+	 */
 	@Inject
 	private StandardPasswordEncoder encoder;
 	
+	/**
+	 * The message source
+	 */
 	@Inject
 	private MessageSource msgSource;
 	
+	/**
+	 * The user service
+	 */
 	@Inject
 	private UserService userService;
 	
@@ -46,11 +55,24 @@ public class RegistrationController {
 		return new User();
 	}
 	
+	/**
+	 * Handles request to show registration form
+	 * @return viewname
+	 */
 	@RequestMapping(method=RequestMethod.GET)
 	public String showForm() {
 		return "register/form";
 	}
 	
+	/**
+	 * Handles form submission for registration
+	 * @param request
+	 * @param confirmPassword
+	 * @param user
+	 * @param result
+	 * @param redirectAttrs
+	 * @return viewname
+	 */
 	@RequestMapping(method=RequestMethod.POST)
 	public String saveForm(HttpServletRequest request, @RequestParam("confirmPassword") String confirmPassword, @Valid User user, BindingResult result, RedirectAttributes redirectAttrs) {
 		if (!confirmPassword.equals(user.getPassword())) {

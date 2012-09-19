@@ -14,7 +14,7 @@ import org.springframework.web.servlet.DispatcherServlet;
 /**
  * Modified on: 18 July 2012
  * 
- * Initializer replacement for web.xml
+ * Servlet 3.0 initializer replacement for web.xml
  *
  * @version: 1.0 18 July 2012
  * @author (c): Michael Le

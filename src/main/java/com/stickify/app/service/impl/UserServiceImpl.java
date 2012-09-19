@@ -23,21 +23,30 @@ import com.stickify.app.service.UserService;
  * 
  */
 @Service
-@Transactional(readOnly=true)
 public class UserServiceImpl implements UserService {
 	private static final Logger LOGGER = LoggerFactory.getLogger(UserServiceImpl.class);
 	
-	@Inject
 	private UserRepository userRepository;
 
+	@Inject
+	public UserServiceImpl(UserRepository userRepository) {
+		this.userRepository = userRepository;
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
-	@Transactional
+	@Transactional(rollbackFor=Exception.class)
 	public User save(User user) {
         return userRepository.save(user);
 	}
-
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
-	@Transactional
+	@Transactional(rollbackFor=Exception.class)
 	public User delete(Long userId) {
 		LOGGER.debug("Deleting user with id: " + userId);
         
@@ -46,17 +55,26 @@ public class UserServiceImpl implements UserService {
         userRepository.delete(deleted);
         return deleted;
 	}
-
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public List<User> findAll() {
 		return userRepository.findAll();
 	}
-
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public User findById(Long id) {
 		return userRepository.findOne(id);
 	}	
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public User findByUsername(String username) {
 		return userRepository.findByUsername(username);

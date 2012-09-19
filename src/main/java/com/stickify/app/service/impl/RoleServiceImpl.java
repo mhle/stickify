@@ -14,43 +14,61 @@ import com.stickify.app.service.RoleService;
 /**
  * Modified on: 4 Jun 2012
  * 
- * <code>Role</code> service implementation.
+ * Service implementation for <code>Role</code>
  *
  * @version: 1.0 4 Jun 2012
  * @author (c): Michael Le
  * 
  */
 @Service
-@Transactional(readOnly=true)
 public class RoleServiceImpl implements RoleService {
 	
-	@Inject
 	private RoleRepository roleRepository;
 	
+	@Inject
+	public RoleServiceImpl(RoleRepository roleRepository) {
+		this.roleRepository = roleRepository;
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
-	@Transactional
+	@Transactional(rollbackFor=Exception.class)
 	public Role save(Role role) {
 		return roleRepository.save(role);
 	}
-
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
-	@Transactional
+	@Transactional(rollbackFor=Exception.class)
 	public Role delete(Long roleId) {
 		Role deleted = roleRepository.findOne(roleId); 
 		roleRepository.delete(deleted);
 		return deleted;
 	}
-
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public List<Role> findAll() {
 		return roleRepository.findAll();
 	}
-
+	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Role findById(Long id) {
 		return roleRepository.findOne(id);
 	}
 	
+	/**
+	 * {@inheritDoc}
+	 */
 	@Override
 	public Role findByName(String name) {
 		return roleRepository.findByName(name);

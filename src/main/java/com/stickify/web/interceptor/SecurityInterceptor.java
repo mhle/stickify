@@ -20,7 +20,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 /**
  * Modified on: 18 July 2012
  * 
- * Interceptor to allow Thymeleaf to access security context
+ * Interceptor for allowing Thymeleaf to access security context
  *
  * @version: 1.0 18 July 2012
  * @author (c): Michael Le
@@ -28,6 +28,10 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
  */
 public class SecurityInterceptor extends HandlerInterceptorAdapter
 {
+	/**
+	 * Insert the security context into the model returned by the response
+	 * Useful for allowing the view to access logged in user's details
+	 */
 	@Override
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception
 	{

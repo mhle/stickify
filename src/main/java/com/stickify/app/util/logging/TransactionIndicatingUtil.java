@@ -9,7 +9,14 @@ package com.stickify.app.util.logging;
  */
 public class TransactionIndicatingUtil {
     private final static String TSM_CLASSNAME = "org.springframework.transaction.support.TransactionSynchronizationManager";
-
+    
+    /**
+     * Returns a string indication if the logged message is running inside a transaction
+     * [+] Transaction is active
+     * [-] Transaction is inactive
+     * @param verbose
+     * @return transaction status
+     */
     public static String getTransactionStatus(boolean verbose) 
     {
         String status = null;

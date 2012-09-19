@@ -16,6 +16,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.jolbox.bonecp.BoneCPDataSource;
 
+/**
+ * Spring java configuration for database
+ * @author mle
+ *
+ */
 @Configuration
 @EnableTransactionManagement
 @PropertySource("classpath:application.properties")

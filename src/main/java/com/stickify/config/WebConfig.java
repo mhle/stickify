@@ -26,6 +26,11 @@ import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
 import com.stickify.web.interceptor.SecurityInterceptor;
 
+/**
+ * Spring MVC java configuration
+ * @author mle
+ *
+ */
 @Configuration
 @EnableWebMvc
 @ImportResource({"classpath:spring-data-jpa-config.xml"})

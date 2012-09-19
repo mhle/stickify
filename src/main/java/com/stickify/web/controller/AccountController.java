@@ -27,6 +27,11 @@ import com.stickify.app.util.Constants;
 import com.stickify.app.util.FlashMessageType;
 import com.stickify.web.security.SecurityUser;
 
+/**
+ * Handles methods related to account actions
+ * @author mle
+ *
+ */
 @Controller
 @RequestMapping("/account")
 @SessionAttributes("user")
@@ -34,27 +39,58 @@ public class AccountController {
 	
 	Logger logger = LoggerFactory.getLogger(AccountController.class);
 	
+	/**
+	 * The user service
+	 */
 	@Inject
 	private UserService userService;
 	
+	/**
+	 * The message source
+	 */
 	@Inject
 	private MessageSource msgSource;
 	
+	/**
+	 * The password encoder
+	 */
 	@Inject
 	private StandardPasswordEncoder encoder;
-		
+	
+	/**
+	 * Handles request for showing a user's details
+	 * @param model
+	 * @param token
+	 * @return viewname
+	 */
 	@RequestMapping("/details")
 	public String showDetails(Model model, UsernamePasswordAuthenticationToken token) {
 		model.addAttribute("user", ((SecurityUser) token.getPrincipal()).getUser());
 		return "account/view";
 	}
 	
+	/**
+	 * Handles request for changing password
+	 * @param model
+	 * @param token
+	 * @return viewname
+	 */
 	@RequestMapping("/changepassword")
 	public String showChangePasswordForm(Model model, UsernamePasswordAuthenticationToken token) {
 		model.addAttribute("user", ((SecurityUser) token.getPrincipal()).getUser());
 		return "account/changepassword";
 	}
 	
+	/**
+	 * Handles form submission for changing password
+	 * @param request
+	 * @param confirmPassword
+	 * @param user
+	 * @param result
+	 * @param redirectAttrs
+	 * @param status
+	 * @return viewname
+	 */
 	@RequestMapping(value="/savepassword", method=RequestMethod.POST)
 	public String savePassword(HttpServletRequest request, @RequestParam("confirmPassword") String confirmPassword, 
 			@Valid User user, BindingResult result, RedirectAttributes redirectAttrs, SessionStatus status) {
@@ -75,12 +111,26 @@ public class AccountController {
 		return "redirect:/account/details";
 	}
 	
+	/**
+	 * Handles request to edit account details
+	 * @param model
+	 * @param token
+	 * @return viewname
+	 */
 	@RequestMapping("/edit")
 	public String showEditForm(Model model, UsernamePasswordAuthenticationToken token) {
 		model.addAttribute("user", ((SecurityUser) token.getPrincipal()).getUser());
 		return "account/edit";
 	}
 	
+	/**
+	 * Handles form submission for editing account details
+	 * @param user
+	 * @param result
+	 * @param status
+	 * @param principal
+	 * @return viewname
+	 */
 	@RequestMapping(value="/save", method=RequestMethod.POST)
 	public String save(@Valid User user, BindingResult result, SessionStatus status, Principal principal) {
 		
