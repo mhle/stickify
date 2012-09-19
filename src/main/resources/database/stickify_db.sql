@@ -4,7 +4,6 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
 
 DROP SCHEMA IF EXISTS `stickify` ;
 CREATE SCHEMA IF NOT EXISTS `stickify` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci ;
-USE `stickify` ;
 
 -- -----------------------------------------------------
 -- Table `stickify`.`user`
@@ -68,7 +67,8 @@ CREATE INDEX `userId` ON `stickify`.`user_role` (`userId` ASC) ;
 
 CREATE INDEX `roleId` ON `stickify`.`user_role` (`roleId` ASC) ;
 
-
+CREATE USER `stickify`@`localhost` IDENTIFIED BY 'st1ck1fy';
+GRANT ALL PRIVILEGES ON `stickify`.* TO 'stickify'@'localhost' WITH GRANT OPTION;
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
@@ -77,26 +77,24 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 -- Data for table `stickify`.`user`
 -- -----------------------------------------------------
-START TRANSACTION;
-USE `stickify`;
-INSERT INTO `stickify`.`user` (`id`, `username`, `email`, `firstName`, `lastName`, `password`, `modificationTime`, `creationTime`) VALUES (NULL, 'stickify', 'admin@stickify.com', 'admin', 'admin', '2ecacca4acf1df8ac8d16f82f7ecff5d15c6ae93156c0c53296d3f6f4c0ff5be63318571181e4f13', NULL, NULL);
+SET AUTOCOMMIT=0;
+INSERT INTO `stickify`.`user` (`id`, `username`, `email`, `firstName`, `lastName`, `password`, `modificationTime`, `creationTime`) VALUES (NULL, 'stickify', 'admin@stickify.com', 'Admin', 'Stickify', 'df9b262a00766471e0341c216db9ff6ee40048a15c830dff3ee6166474b7d911b39e87f8def52545', NULL, NULL);
 
 COMMIT;
 
 -- -----------------------------------------------------
 -- Data for table `stickify`.`role`
 -- -----------------------------------------------------
-START TRANSACTION;
-USE `stickify`;
-INSERT INTO `stickify`.`role` (`id`, `name`) VALUES (1, 'ADMIN');
+SET AUTOCOMMIT=0;
+INSERT INTO `stickify`.`role` (`id`, `name`) VALUES (NULL, 'ADMIN');
+INSERT INTO `stickify`.`role` (`id`, `name`) VALUES (NULL, 'USER');
 
 COMMIT;
 
 -- -----------------------------------------------------
 -- Data for table `stickify`.`user_role`
 -- -----------------------------------------------------
-START TRANSACTION;
-USE `stickify`;
-INSERT INTO `stickify`.`user_role` (`id`, `userId`, `roleId`) VALUES (1, 1, 1);
+SET AUTOCOMMIT=0;
+INSERT INTO `stickify`.`user_role` (`id`, `userId`, `roleId`) VALUES (NULL, 1, 1);
 
 COMMIT;
