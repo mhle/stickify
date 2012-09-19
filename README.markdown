@@ -3,9 +3,9 @@
 Stickify allows you to remember and share small content easily. Think of it as virtual Post-its that can be shared between groups of friends.
 
 # Requirements
-- Servlet 3.0 container, e.g. Tomcat 7 or Jetty 8
+- Servlet 3.0 container, e.g. Tomcat 7 or Jetty 8 (if you don't want to deploy to the embedded server)
 - Maven 3
-- MySQL server
+- MySQL 5
 
 # Developer notes
 
