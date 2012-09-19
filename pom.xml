@@ -19,6 +19,11 @@
   </properties>
   
   <repositories>
+  	<repository>
+	 	<id>spring-snapshot</id>
+	 	<name>Spring Maven SNAPSHOT Repository</name>
+	 	<url>http://repo.springsource.org/libs-snapshot</url>
+	</repository>
 	<repository>
 		<id>java.net2</id>
 		<name>Repository hosting the jee6 artifacts</name>
@@ -31,7 +36,7 @@
 			<enabled>true</enabled>
 		</releases>
 		<snapshots>
-			<enabled>false</enabled>
+			<enabled>true</enabled>
 		</snapshots>
 	</repository>
     <repository>
