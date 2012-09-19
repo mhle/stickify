@@ -19,11 +19,6 @@
   </properties>
   
   <repositories>
-  	<repository>
-	 	<id>spring-snapshot</id>
-	 	<name>Spring Maven SNAPSHOT Repository</name>
-	 	<url>http://repo.springsource.org/libs-snapshot</url>
-	</repository>
 	<repository>
 		<id>java.net2</id>
 		<name>Repository hosting the jee6 artifacts</name>
@@ -36,7 +31,7 @@
 			<enabled>true</enabled>
 		</releases>
 		<snapshots>
-			<enabled>true</enabled>
+			<enabled>false</enabled>
 		</snapshots>
 	</repository>
     <repository>
@@ -319,6 +314,17 @@
 				<encoding>UTF-8</encoding>
 			</configuration>
 		</plugin>
+		<plugin>
+		    <groupId>org.apache.tomcat.maven</groupId>
+		    <artifactId>tomcat7-maven-plugin</artifactId>
+		    <version>2.0</version>
+		    <configuration>
+		      <port>8080</port>
+		      <path>/stickify</path>
+		      <useTestClasspath>false</useTestClasspath>
+		    </configuration>
+		  </plugin>
+		
 	</plugins>
 	<finalName>stickify</finalName>
   </build>
