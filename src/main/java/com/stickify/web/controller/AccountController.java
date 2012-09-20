@@ -42,20 +42,24 @@ public class AccountController {
 	/**
 	 * The user service
 	 */
-	@Inject
 	private UserService userService;
 	
 	/**
 	 * The message source
 	 */
-	@Inject
 	private MessageSource msgSource;
 	
 	/**
 	 * The password encoder
 	 */
-	@Inject
 	private StandardPasswordEncoder encoder;
+	
+	@Inject
+	public AccountController(UserService userService, MessageSource msgSource, StandardPasswordEncoder encoder) {
+		this.userService = userService;
+		this.msgSource = msgSource;
+		this.encoder = encoder;
+	}
 	
 	/**
 	 * Handles request for showing a user's details
@@ -70,7 +74,7 @@ public class AccountController {
 	}
 	
 	/**
-	 * Handles request for changing password
+	 * Handles GET request for changing password
 	 * @param model
 	 * @param token
 	 * @return viewname

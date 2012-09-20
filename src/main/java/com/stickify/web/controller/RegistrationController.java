@@ -35,20 +35,24 @@ public class RegistrationController {
 	/**
 	 * The password encoder
 	 */
-	@Inject
 	private StandardPasswordEncoder encoder;
 	
 	/**
 	 * The message source
 	 */
-	@Inject
 	private MessageSource msgSource;
 	
 	/**
 	 * The user service
 	 */
-	@Inject
 	private UserService userService;
+	
+	@Inject
+	public RegistrationController(StandardPasswordEncoder encoder, MessageSource msgSource, UserService userService) {
+		this.encoder = encoder;
+		this.msgSource = msgSource;
+		this.userService = userService;
+	}
 	
 	@ModelAttribute
 	public User user() {

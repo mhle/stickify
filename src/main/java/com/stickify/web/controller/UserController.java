@@ -40,14 +40,18 @@ public class UserController {
 	/**
 	 * The user service
 	 */
-	@Inject
 	private UserService userService;
 	
 	/**
 	 * The role service
 	 */
-	@Inject
 	private RoleService roleService;
+	
+	@Inject
+	public UserController(UserService userService, RoleService roleService) {
+		this.userService = userService;
+		this.roleService = roleService;
+	}
 	
 	/**
 	 * Register Spring's <code>PropertyEditor</code>s
