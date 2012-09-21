@@ -14,8 +14,7 @@
 			<p th:if="${sec.isAuthenticated()}" th:text="#{home.index.authenticated(${sec.principal.user.firstName})}">Authenticated</p>
 			
 			<!-- Inspirational quote -->
-			<p>Your daily inspirational quote from Twitter is:</p>
-			<p style="font-size: 24px; font-weight: bold;" th:if="${tweet != null}" th:text="${tweet.text}">Today's Inspirational Twitter quote</p>
+			<p style="font-size: 20px; font-weight: bold; font-style: italic" th:if="${tweet != null}" th:text="${tweet.text}">Today's Inspirational Twitter quote</p>
 			
 			<ul th:if="${sec.isAuthenticated()}">
 				<li><a th:href="@{/account/details}" href="../account/view.html" th:text="#{home.index.account}">Account settings</a></li>
